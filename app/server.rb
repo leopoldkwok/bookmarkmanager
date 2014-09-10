@@ -44,20 +44,20 @@ end
 post '/users' do 
   # we just initialize the object
   # without saving it. It may be invalid
-  user = User.new(:email => params[:email],
+  @user = User.new(:email => params[:email],
                   :password => params[:password],
                   :password_confirmation => params[:password_confirmation])
   #Let's try saving it
   #if the model is valid
   # it will be saved
-  if user.save
-    session[:user_id]= user.id 
+  if @user.save
+    session[:user_id]= @user.id 
     redirect to('/')
   # if it's not valid,
   # we'll show the same
   # form again
   else
-    flash[:notice]= "Sorry, your passwords don't match"
+    flash.now[:errors]= @user.errors.full_messages
     erb :"users/new"
   end
 
