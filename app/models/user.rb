@@ -1,3 +1,5 @@
+ # bcrypt will generate the password hash
+
 require 'bcrypt'
 
 class User
