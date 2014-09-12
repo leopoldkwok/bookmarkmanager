@@ -44,7 +44,7 @@ get '/users/reset_password/:token' do
     user.save
 
     # this is new
-    send_token_email(params[:email], user.password_token)
+    send_token_email(params[:email],user.password_token)
     flash[:notice] = "Please check your email to complete password reset"
     redirect to 'sessions/new'
 end

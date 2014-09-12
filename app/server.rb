@@ -20,6 +20,7 @@ require_relative 'data_mapper_setup'
 enable :sessions
 set :session_secret, 'my unique encryption key!'
 use Rack::Flash
+use Rack::MethodOverride
 set :partial_template_engine, :erb
 
 
