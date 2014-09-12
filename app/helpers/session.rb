@@ -16,12 +16,12 @@ module SessionHelpers
     click_button 'Sign in'
   end
 
-  def request_reset_password(email="test@test.com")
-    visit '/sessions/new'
-    click_link 'Forgot password'
-    fill_in "email", with: "test@test.com"
-    click_button 'Request password reset'
-  end
+  # def request_reset_password(email="test@test.com")
+  #   visit '/sessions/new'
+  #   click_link 'Forgot password'
+  #   fill_in "email", with: "test@test.com"
+  #   click_button 'Request password reset'
+  # end
 
 
 end

@@ -1,7 +1,6 @@
 require 'spec_helper'
-require_relative 'helpers/session'
+# require_relative 'helpers/session'
 	
-include SessionHelpers
 
 feature "User signs up" do
 #strictly speaking, the tests that check the UI

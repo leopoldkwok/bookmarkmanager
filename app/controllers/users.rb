@@ -1,64 +1,49 @@
+include EmailSender
+
 get '/users/new' do
-  # note the view is in views/users/new.erb
-  # we need the quotes because otherwise
-  # ruby would divide the symbol :users by the
-  # variable new (which makes no sense)
   @user = User.new
   erb :"users/new"
 end
 
-
 post '/users' do
-  # we just initialize the object
-  # without saving it. It may be invalid
-  @user = User.new(:email => params[:email], 
-              :password => params[:password],
-              :password_confirmation => params[:password_confirmation])  
-  # let's try saving it
-  # if the model is valid,
-  # it will be saved
+  @user = User.create(email: params[:email],
+              password: params[:password],
+              password_confirmation: params[:password_confirmation])
   if @user.save
     session[:user_id] = @user.id
     redirect to('/')
-    # if it's not valid,
-    # we'll show the same
-    # form again
   else
-      flash.now[:errors] = @user.errors.full_messages
-      erb :"users/new"
+    flash.now[:errors] = @user.errors.full_messages
+    erb :"users/new"
   end
-
 end
 
-# this is new
-get '/users/password_reset_request' do 
-  erb :"users/password_reset_request"
+get '/users/reset_password' do
+  erb :"/users/reset_password"
 end
 
-
-get '/users/reset_password/:token' do
-    user = User.first(:email => email)
-    # avoid having to memorise ascii codes
-    user.password_token = (1..64).map{('A'..'Z').to_a.sample}.join
-    user.password_token_timestamp = Time.now
-    user.save
-
-    # this is new
-    send_token_email(params[:email],user.password_token)
-    flash[:notice] = "Please check your email to complete password reset"
-    redirect to 'sessions/new'
+post '/users/reset_password/' do
+  email_reset = params[:email_reset]
+  user = User.first(email: email_reset)
+  user.password_token = (1..64).map{('A'..'Z').to_a.sample}.join
+  user.password_token_timestamp = Time.now
+  user.save
+  send_email(user)
+  flash[:notice] = "Please check your email for your password reset link."
+  redirect to('/')
 end
 
-
-# this is new
-get '/users/password_reset_confirmation/:token' do 
-  erb :"users/password_reset_confirmation"
+get '/users/reset_password/:token' do |token|
+  @user = User.first(password_token: token)
+  if @user
+    erb :"/users/new_password"
+  else
+    flash[:notice] = "Invalid token"
+    redirect to '/users/reset_password'
+  end
 end
 
-# this is new
-post '/users/password_reset_confirmation' do 
-  user = User.first(:password_token => params[:token])
-  user.password=(params[:password])
-  flash[:notice] = "Your password has been reset, please sign in"
-  redirect to 'sessions/new'
+post '/users/new_password/' do
+  user = User.first(password_token: params[:password_token])
+
 end

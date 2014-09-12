@@ -17,7 +17,7 @@ class User
 	# new item
 
 	 property :password_token, Text
-	 property :password_token_timestamp, Time 
+	 property :password_token_timestamp, DateTime 
 
 	attr_reader :password
 	attr_accessor :password_confirmation
