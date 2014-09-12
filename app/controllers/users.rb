@@ -7,6 +7,7 @@ get '/users/new' do
   erb :"users/new"
 end
 
+
 post '/users' do
   # we just initialize the object
   # without saving it. It may be invalid
@@ -23,7 +24,41 @@ post '/users' do
     # we'll show the same
     # form again
   else
-    flash.now[:errors] = @user.errors.full_messages
-    erb :"users/new"
+      flash.now[:errors] = @user.errors.full_messages
+      erb :"users/new"
   end
+
+end
+
+# this is new
+get '/users/password_reset_request' do 
+  erb :"users/password_reset_request"
+end
+
+
+get '/users/reset_password/:token' do
+    user = User.first(:email => email)
+    # avoid having to memorise ascii codes
+    user.password_token = (1..64).map{('A'..'Z').to_a.sample}.join
+    user.password_token_timestamp = Time.now
+    user.save
+
+    # this is new
+    send_token_email(params[:email], user.password_token)
+    flash[:notice] = "Please check your email to complete password reset"
+    redirect to 'sessions/new'
+end
+
+
+# this is new
+get '/users/password_reset_confirmation/:token' do 
+  erb :"users/password_reset_confirmation"
+end
+
+# this is new
+post '/users/password_reset_confirmation' do 
+  user = User.first(:password_token => params[:token])
+  user.password=(params[:password])
+  flash[:notice] = "Your password has been reset, please sign in"
+  redirect to 'sessions/new'
 end
