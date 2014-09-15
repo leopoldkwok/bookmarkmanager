@@ -70,7 +70,7 @@ header {
     font-size: 14px;
   }
 
-#links-container {
+#container {
   background-color: white;
   margin: 40px;
   box-shadow: 0 0 5px rgba(0,0,0,0.4);
@@ -97,6 +97,16 @@ header {
     float: right; 
     font-size: 12px;
   }
+
+#notice {
+  text-align: center;
+  margin: 5px;
+  padding: 5px;
+  background-color: rgba(67,183,120,0.75);
+  border-radius: 4px;
+  box-shadow: 0 0 3px rgba(0,0,0,0.4);
+  color: white;
+}
 
 footer {
   display: flex;
