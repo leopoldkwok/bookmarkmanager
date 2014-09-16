@@ -9,13 +9,13 @@ post '/sessions' do
     session[:user_id] = user.id
     redirect to('/')
   else
-    flash[:errors] = ["The email or password are incorrect"]
+    flash[:errors] = ["The email or password is incorrect"]
     erb :"sessions/new"
   end
 end
 
 delete '/sessions' do
-      flash[:notice] = "Good bye!"
-      session[:user_id] = nil
-      redirect to('/')
+  flash[:notice] = "Good bye!"
+  session[:user_id] = nil
+  redirect to('/')
 end
