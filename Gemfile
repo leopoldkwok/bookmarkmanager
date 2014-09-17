@@ -1,5 +1,7 @@
 source "https://rubygems.org"
 
+ruby '2.1.2'
+
 gem 'sinatra'
 gem 'data_mapper'
 gem 'dm-postgres-adapter'
@@ -16,7 +18,6 @@ group :development, :test do
   gem 'capybara'
   gem 'cucumber-sinatra'
   gem 'cucumber'
-  gem 'shotgun'
 end
 
 # gem "rails"
