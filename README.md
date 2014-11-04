@@ -3,11 +3,10 @@ Bookmark Manager
 
 This week's project is a bookmark manager. The goal is to expose you to the following aspects of web development, in addition to what we've studied before:
 
-Integration testing: Capybara (Monday)
-Relational databases (Tuesday and Wednesday)
-Security considerations (Thursday)
+Integration testing: Capybara (Monday)  
+Relational databases (Tuesday and Wednesday)  
+Security considerations (Thursday)  
 
- Sinatra, RSpec, etc.
 
 High-level specification
 -------------------------
