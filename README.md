@@ -70,7 +70,6 @@ Migrate the required tables:
 ```shell
 $ rake auto_migrate
 ```
-rackup
 
 Run Rspec:
 ```shell
