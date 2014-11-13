@@ -1,3 +1,4 @@
+[![Code Climate](https://codeclimate.com/github/leopoldkwok/bookmarkmanager/badges/gpa.svg)](https://codeclimate.com/github/leopoldkwok/bookmarkmanager)
 Bookmark Manager
 ================
 
