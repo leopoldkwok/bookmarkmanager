@@ -1,4 +1,4 @@
-[![Code Climate](https://codeclimate.com/github/leopoldkwok/bookmarkmanager/badges/gpa.svg)](https://codeclimate.com/github/leopoldkwok/bookmarkmanager)
+[![Code Climate](https://codeclimate.com/github/leopoldkwok/bookmarkmanager/badges/gpa.svg)](https://codeclimate.com/github/leopoldkwok/bookmarkmanager)  [![Test Coverage](https://codeclimate.com/github/leopoldkwok/bookmarkmanager/badges/coverage.svg)](https://codeclimate.com/github/leopoldkwok/bookmarkmanager)
 Bookmark Manager
 ================
 

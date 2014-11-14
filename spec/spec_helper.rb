@@ -1,3 +1,7 @@
+ENV['CODECLIMATE_REPO_TOKEN']='74ad20b65df25117537cdc238289db999079aa5b28ec031474f0a2663107befd'
+require "codeclimate-test-reporter"
+CodeClimate::TestReporter.start
+
 # Remember environment variables from week 1?
 ENV["RACK_ENV"] = 'test' # because we need to know what database to work with
 
